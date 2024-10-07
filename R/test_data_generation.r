@@ -60,13 +60,13 @@ fs_test_data <- db_hex |>
 # text	label	label_text
 
 fs_test_data <- fs_test_data %>% 
-  mutate(text = case_when(
+  mutate(titel_kursbeschreibung = case_when(
     !is.na(kursbeschreibung) ~ kursbeschreibung,
     TRUE ~ titel                                                                   
   )) %>% 
   rename(label_text=fs_lable) %>%
-  mutate(label = as.numeric(factor(label_text))) %>% 
-  select(text,label,label_text)
+  mutate(label_num = as.numeric(factor(label_text))) %>% 
+  select(titel_kursbeschreibung,label_text,label_num)
 
  
 
