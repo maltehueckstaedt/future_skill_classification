@@ -1,0 +1,9 @@
+results/
+logs/
+*.log
+__pycache__
+future_skill_classifier
+.Rproj.user
+data/~$*.xlsx
+/data/*
+/checkpoints/*
