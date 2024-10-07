@@ -7,3 +7,4 @@ future_skill_classifier
 data/~$*.xlsx
 /data/*
 /checkpoints/*
+Py/Tiny_Few_Shot_Classifier_files/*
