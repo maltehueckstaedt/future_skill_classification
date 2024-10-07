@@ -136,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><code>from sklearn.model_selection import train_test_split</code>: Zum Aufteilen eines Datensatzes in Trainings- und Testdaten. Diese Methode wird oft verwendet, um Modelle zu validieren und zu evaluieren.</p></li>
 <li><p><code>from transformers import TrainingArguments</code>: Legt die Trainingsparameter für Modelle aus der HuggingFace Transformers Bibliothek fest (z.B. Anzahl der Epochen, Batch-Größe, Optimierungsparameter etc.).</p></li>
 </ul>
-<div id="cell-2" class="cell" data-execution_count="51">
+<div id="cell-2" class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datasets <span class="im">import</span> load_dataset</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sentence_transformers.losses <span class="im">import</span> CosineSimilarityLoss</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -277,7 +277,7 @@ c:\Users\Hueck\AppData\Local\Programs\Python\Python312\Lib\site-packages\dataset
 </div>
 </div>
 <p>Nun wird das Training induziert:</p>
-<div id="cell-15" class="cell">
+<div id="cell-15" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>trainer.train()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>***** Running training *****
@@ -294,13 +294,33 @@ c:\Users\Hueck\AppData\Local\Programs\Python\Python312\Lib\site-packages\dataset
 <pre><code>{'embedding_loss': 0.2519, 'grad_norm': 2.2817471027374268, 'learning_rate': 3.125e-07, 'epoch': 0.0}
 {'embedding_loss': 0.2065, 'grad_norm': 1.211120843887329, 'learning_rate': 1.5625e-05, 'epoch': 0.08}
 {'embedding_loss': 0.1206, 'grad_norm': 2.5888679027557373, 'learning_rate': 1.87434554973822e-05, 'epoch': 0.16}
-{'embedding_loss': 0.062, 'grad_norm': 1.6714777946472168, 'learning_rate': 1.699825479930192e-05, 'epoch': 0.24}</code></pre>
+{'embedding_loss': 0.062, 'grad_norm': 1.6714777946472168, 'learning_rate': 1.699825479930192e-05, 'epoch': 0.24}
+{'embedding_loss': 0.0311, 'grad_norm': 0.9450912475585938, 'learning_rate': 1.5253054101221642e-05, 'epoch': 0.31}
+{'embedding_loss': 0.0124, 'grad_norm': 1.5740643739700317, 'learning_rate': 1.3507853403141362e-05, 'epoch': 0.39}
+{'embedding_loss': 0.0085, 'grad_norm': 0.0821307972073555, 'learning_rate': 1.1762652705061085e-05, 'epoch': 0.47}
+{'embedding_loss': 0.0022, 'grad_norm': 0.053271178156137466, 'learning_rate': 1.0017452006980804e-05, 'epoch': 0.55}
+{'embedding_loss': 0.0043, 'grad_norm': 0.10809438675642014, 'learning_rate': 8.272251308900523e-06, 'epoch': 0.63}
+{'embedding_loss': 0.001, 'grad_norm': 0.055178798735141754, 'learning_rate': 6.527050610820245e-06, 'epoch': 0.71}
+{'embedding_loss': 0.0012, 'grad_norm': 1.0906651020050049, 'learning_rate': 4.781849912739966e-06, 'epoch': 0.78}
+{'embedding_loss': 0.0009, 'grad_norm': 0.3505357801914215, 'learning_rate': 3.036649214659686e-06, 'epoch': 0.86}
+{'embedding_loss': 0.0012, 'grad_norm': 0.030179228633642197, 'learning_rate': 1.2914485165794066e-06, 'epoch': 0.94}
+{'train_runtime': 14351.2202, 'train_samples_per_second': 0.709, 'train_steps_per_second': 0.044, 'train_loss': 0.03563860492134581, 'epoch': 1.0}</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"78b55d21497244f4899008ec7712081a","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"d6a16678685b47139912e52fc2c763dc","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
 </div>
 </div>
 </section>
 <section id="evaluieren-des-modells" class="level2">
 <h2 class="anchored" data-anchor-id="evaluieren-des-modells">Evaluieren des Modells</h2>
-<div id="cell-17" class="cell" data-execution_count="10">
+<div id="cell-17" class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datasets</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> trainer.evaluate()</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -308,22 +328,34 @@ c:\Users\Hueck\AppData\Local\Programs\Python\Python312\Lib\site-packages\dataset
 <div class="cell-output cell-output-stderr">
 <pre><code>***** Running evaluation *****</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>{'accuracy': 0.39473684210526316}</code></pre>
-</div>
-</div>
-<div id="cell-18" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>metrics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
-<pre><code>{'accuracy': 0.39473684210526316}</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="60">
+<pre><code>{'accuracy': 0.8828125}</code></pre>
 </div>
 </div>
 </section>
 </section>
 <section id="upload-des-modells" class="level1">
 <h1>Upload des Modells</h1>
-<div id="cell-20" class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>trainer.push_to_hub(<span class="st">"fs-setfit-model"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-19" class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>trainer.push_to_hub(<span class="st">"Chernoffface/fs-setfit-model"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"755b9200896e461cb934236e7982355e","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"b23f227bbf0c4ed7b81d4d5218c3703c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"1c7ae5d1d74640949c9ea8f6e04fcd73","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="62">
+<pre><code>CommitInfo(commit_url='https://huggingface.co/Chernoffface/fs-setfit-model/commit/d3ad3bd17a0cd533895fae3c22adc590d1deeea1', commit_message='Add SetFit model', commit_description='', oid='d3ad3bd17a0cd533895fae3c22adc590d1deeea1', pr_url=None, pr_revision=None, pr_num=None)</code></pre>
+</div>
 </div>
 </section>
 
