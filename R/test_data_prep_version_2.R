@@ -27,7 +27,17 @@ detect_skills <- function(title, description) {
   return(names(skills)[unlist(skills)])
 }
 
-# Anwenden auf den DataFrame
+# Beispiel-DataFrame
+df <- data.frame(
+  title = c("Data Analytics & Softwareentwicklung", "Design und UX für IoT-Anwendungen", "Quantum Computing Basics"),
+  description = c(
+    "Entwicklung von KI-gestützten Systemen zur Datenanalyse und Softwareentwicklung",
+    "Benutzerfreundlichkeit und Interaktionsdesign in IoT-Systemen",
+    "Einführung in die Quantenalgorithmen und ihre Anwendungsbereiche"
+  )
+)
+
+# Anwenden der Funktion auf den DataFrame
 df <- df %>%
   rowwise() %>%
   mutate(skills = list(detect_skills(title, description)))
