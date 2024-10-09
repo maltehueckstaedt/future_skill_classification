@@ -8,4 +8,7 @@ data/~$*.xlsx
 /data/*
 /checkpoints/*
 Py/Tiny_Few_Shot_Classifier_files/*
+Py/Tiny_Few_Shot_Multi_Lable_Classifer_files/*
+Py/checkpoints/*
 *.Rhistory
+*.html
