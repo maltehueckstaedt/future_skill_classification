@@ -29,7 +29,7 @@ Eine kurze Einführung in SetFit bieten Tunstall et al. 2022 [^2]. Für weitere 
 
 ### Trainingsdaten
 
-Von Yannic Hinrichs wurden per String-Match Trainingsdaten erzeugt, die um weitere Daten ergänzt wurden, die keine Future Skills enthalten. Die Daten wurden weiterhin durch Yannic Hinrichs händisch kontrolliert. Der entsprechende R-Code findet sich [hier](R/Create_Traindata_FS Classifier_hya.R).
+Von Yannic Hinrichs wurden per String-Match Trainingsdaten erzeugt, die um weitere Daten ergänzt wurden, die keine Future Skills enthalten. Die Daten wurden weiterhin durch Yannic Hinrichs händisch kontrolliert. Der entsprechende R-Code findet sich [hier](R/Create_Traindata_FS_Classifier_hya.R).
 
 Alternativ bestehen weiterhin die Daten, die Franziska Weber für das Training ihres Classifiers verwendet hat. Dieses werden derzeit (Stand 21.10.24) ebenfalls für das Training des folgenden Classfiers verwendet.
 
@@ -41,6 +41,30 @@ Um die Qualität der Classifier zu bestimmen, müssen ggf. geeignete Testdaten e
 2. Balance und Coverage: Sollten Skills in der GG ggf. seltener vorkommen, sollte diese dennoch in den Testdaten hinreichend häufig vertreten sein, um verzerrungen bei der Klassifikation zu vermeiden. Rule of Thumb: 50-100 Fälle pro Skill. 
 3. Testgröße in Relation zur Modellgröße: Die Testdaten sollten 20% der Gesamtdaten ausmachen. 
 4. Iteratives Labeling und Evaluierung: Es sollte iterativ vorgegangen werden: Begonnen wird mit einem kleineren, manuell gelabelten Testdatensatz, um den Klassifikator initial zu evaluieren. Sollte sich herausstellen, dass die Performance in bestimmten Bereichen stark schwankt oder die Varianz hoch ist, kann durch das Labeln weiterer Daten gezielt nachgesteuert werden. Auf diese Weise lässt sich das Modell schrittweise verbessern und validieren, um eine stabilere und genauere Klassifikation zu erreichen. 
+
+# Enviorment mit Peotry
+
+# Aufbaue des Repos
+
+```bash
+C:.
+│   .gitignore
+│   Gen_Poetry_Enviorment.ipynb
+│   poetry.lock
+│   pyproject.toml
+│   README.md
+│
+├───Py
+│       Tiny_Few_Shot_Classifier.html
+│       Tiny_Few_Shot_Classifier.ipynb
+│       Tiny_Few_Shot_Multi_Lable_Classifer.ipynb
+│       Tiny_Zero_Shot_Classifier.ipynb
+│       Use_Tiny_Few_Shot_Classifier.ipynb
+│
+└───R
+        test_data_generation.r
+        test_data_prep_version_2.R
+```
 
 # Results
 
