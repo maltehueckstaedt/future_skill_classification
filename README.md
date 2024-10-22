@@ -8,9 +8,9 @@ Dieser Maßgabe entsprechen werden die Codes der Klassifikatoren detalliert komm
 
 ##  SetFit: Few-Shot Classification für Future Skills
 
-Im Anschluss an die Vorarbeit von Franziska Weber bleibt es Ziel, mit dem auf `BERT` basierenden `SetFit` ein vortrainiertes Deep-Learning-Modell *feinzutunen*, das Future Skills aus Kurstiteln, Beschreibungen oder Lernzielen vorhersagen kann. Dafür muss der Text in numerische Werte umgewandelt werden, damit das Modell die semantischen Beziehungen der Wörter lernt.
+Im Anschluss an die Vorarbeit von Franziska Weber bleibt es Ziel, mit dem auf `[BERT](https://medium.com/@shaikhrayyan123/a-comprehensive-guide-to-understanding-bert-from-beginners-to-advanced-2379699e2b51)` basierenden `SetFit` ein vortrainiertes Deep-Learning-Modell *feinzutunen*, das Future Skills aus Kurstiteln, Beschreibungen oder Lernzielen vorhersagen kann. Dafür muss der Text in numerische Werte umgewandelt werden, damit das Modell die semantischen Beziehungen der Wörter lernt.
 
-Anstatt das Modell von Grund auf zu trainieren, nutzen wir mit `SetFit` ein vortrainiertes Sprachmodell, das bereits grundlegende Embeddings aufweist. Dieses Modell wird dann auf unseren spezifischen Anwendungsfall (FS Skills) feinabgestimmt.
+Anstatt das Modell von Grund auf zu trainieren, nutzen wir mit `SetFit` ein vortrainiertes Sprachmodell, das bereits grundlegende Embeddings aufweist. Dieses Modell wird dann auf unseren spezifischen Anwendungsfall (FS Skills) feinabgestimmt. 
 
 Da Trainings- und Testdaten in jedem Fall in den Anwendungsfall des FS-Frameworks knapp sind, ist das Few-Shot-Learning eine vielversprechende Alternative zu klassischen Transformern. SetFit, ein Beispiel für Few-Shot-Learning, kann mit nur wenigen Beispielen pro Klasse ähnliche Ergebnisse erzielen wie traditionelles Finetuning mit vielen Daten.
 
