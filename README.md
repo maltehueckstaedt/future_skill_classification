@@ -33,6 +33,8 @@ Von Yannic Hinrichs wurden per String-Match Trainingsdaten erzeugt, die um weite
 
 Alternativ bestehen weiterhin die Daten, die Franziska Weber für das Training ihres Classifiers verwendet hat. Dieses werden derzeit (Stand 21.10.24) ebenfalls für das Training des folgenden Classfiers verwendet.
 
+Die Trainingsdaten befinden sich hier:
+
 ### Testdaten
 
 Um die Qualität der Classifier zu bestimmen, müssen ggf. geeignete Testdaten erzeugt werden. Folgende Punkte sollten berücksichtigt werden:
@@ -42,9 +44,17 @@ Um die Qualität der Classifier zu bestimmen, müssen ggf. geeignete Testdaten e
 3. Testgröße in Relation zur Modellgröße: Die Testdaten sollten 20% der Gesamtdaten ausmachen. 
 4. Iteratives Labeling und Evaluierung: Es sollte iterativ vorgegangen werden: Begonnen wird mit einem kleineren, manuell gelabelten Testdatensatz, um den Klassifikator initial zu evaluieren. Sollte sich herausstellen, dass die Performance in bestimmten Bereichen stark schwankt oder die Varianz hoch ist, kann durch das Labeln weiterer Daten gezielt nachgesteuert werden. Auf diese Weise lässt sich das Modell schrittweise verbessern und validieren, um eine stabilere und genauere Klassifikation zu erreichen. 
 
-# Enviorment mit Peotry
+## Enviroment mit Peotry
 
-# Aufbaue des Repos
+Die Verwendung von Environments sind in Python besonders beim Trainieren eines Classifiers sinnvoll, da sie dabei helfen, Abhängigkeiten zwischen verwendeten Paketen sauber zu verwalten und Konflikte zu vermeiden. Ein Environment isoliert die Bibliotheken, die wir für den Classifier benötigen, und stellt zeitgleich sicher, dass andere Python-Projekte davon unberührt bleiben. Dies verhindert Versionskonflikte und macht es einfacher, Projekte auf anderen Rechnern oder von anderen Mitarbeiter\*innen reproduzierbar zu machen.
+
+Für die Erzeugung des Enviroments wurde [Poetry](https://python-poetry.org/) verwendet. Poetry bietet gegenüber klassischen Python-Enviroment-Lösungen nicht nur die Verwaltung von Abhängigkeiten, sondern vereinfacht darüber hinaus den gesamten Workflow im Kontext des Paketmanagements: Poetry automatisiert die Installation, Aktualisierung und das Sperren von Abhängigkeiten mithilfe der Dateien pyproject.toml und poetry.lock, wodurch sichergestellt wird, dass alle Projektbeteiligten dieselben Versionen verwenden. Gleichzeitig erstellt es virtuelle Umgebungen, die verhindern, dass die Bibliotheken mit anderen Projekten auf deinem System in Konflikt geraten. Im Gegensatz zu einfachen Python-Environments bietet Poetry ein robustes Tool, das sowohl für den Dependency-Management-Prozess als auch für das Veröffentlichen von Python-Paketen optimiert ist.
+
+Das Poetry-Enviorment wird [hier](Gen_Poetry_Enviorment.ipynb) erstellt. Die dadruch erzeugten `poetry.lock` und `pyproject.toml` befinden sich ebenfalls im Stammverzeichnis des Repositorys.
+
+# Aufbau des Repos
+
+Das Repo ist folgendermaßen aufgebaut:
 
 ```bash
 C:.
@@ -55,20 +65,35 @@ C:.
 │   README.md
 │
 ├───Py
-│       Tiny_Few_Shot_Classifier.html
-│       Tiny_Few_Shot_Classifier.ipynb
-│       Tiny_Few_Shot_Multi_Lable_Classifer.ipynb
-│       Tiny_Zero_Shot_Classifier.ipynb
-│       Use_Tiny_Few_Shot_Classifier.ipynb
+│   │   poetry_prompts.py
+│   │
+│   └───notebooks
+│           Tiny_Few_Shot_Multi_Lable_Classifer.ipynb
+│           Use_Tiny_Few_Shot_Multi_Lable_Classifier.ipynb
 │
 └───R
-        test_data_generation.r
-        test_data_prep_version_2.R
+        Create_Traindata_FS_Classifier_hya.R
+        plot_hex_skills.R
 ```
+
+Im Idealfall muss für die Verwendung des Classifiers lediglich das Notebook `Py\notebooks\Use_Tiny_Few_Shot_Multi_Lable_Classifier.ipynb` verwendet werden. Ein Guide ist in das entsprechende Notbook eingearbeit. Es kann daher intuitiv und selbsterklärend verwendet werden. Als Datengrundlagen sollen die jeweils aktuellen HEX-Daten gelten. Ihr aktueller Speicherort kann immer bei Eike Schröder angefragt werden.
 
 # Results
 
-https://huggingface.co/Chernoffface/fs-setfit-model
+Das trainierte Model wurde sowohl lokal, als auch auf dem Hugging-Face-Hub abgelegt. 
+
+Die lokale Version findet sich [hier](). Die Kopie auf Hugging Face kann [hier](https://huggingface.co/Chernoffface/fs-setfit-model) abgerufen werden. 
+
+Für eine einfache Anwendung kann das Modell wie folgt für die prediction von Future Skills verwendet werden:
+
+```python
+from setfit import SetFitModel
+
+# Download from the 🤗 Hub
+model = SetFitModel.from_pretrained("Chernoffface/fs-setfit-multilable-model")
+# Run inference
+preds = model("Grundlagen der Programmierung mit C++")
+```
  
 
 [^1]: Figueroa, R.L., Zeng-Treitler, Q., Kandula, S. et al. (2012). Predicting sample size required for classification performance. BMC Med Inform Decis Mak 12, 8 (2012). https://doi.org/10.1186/1472-6947-12-8
