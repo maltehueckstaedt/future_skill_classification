@@ -2,7 +2,7 @@
 
 ## Hintergrund
 
-Franziska Weber hat bereits einen Future Skill Klassifikator trainiert, der per API abrufbar ist. Leider können einzelne Dependencies nicht aufgelöst, verschiedene Klassen und Pakete nicht installiert werden, weshalb der Klassifikator nicht mehr zum laufen gebracht werden konnte. Die entsprechenden Codes des Klassifikators sind ebenfalls (für einfache Pytho n-Novizen) nicht ohne Weiteres nachvollziehbar. Da die Vorarbeit von Franziska wenig zugänglich ist, werden aus Effizienzgründen eigene Klassifikatoren trainiert, die allerdings grosso modo ihrer Vorgehensweise (SetFit-Approach) folgt. 
+Franziska Weber hat einen [Future Skills-Classifier](http://srv-data01:30080/hex/future_skill_classification) trainiert, der per [API](http://srv-data01:30080/hex/future_skill_classifier_api) abrufbar ist. Leider können einzelne Dependencies nicht aufgelöst, verschiedene Klassen und Pakete nicht installiert werden, weshalb der Klassifikator nicht mehr zum laufen gebracht werden konnte. Die entsprechenden Codes des Klassifikators sind ebenfalls (für einfache Pytho n-Novizen) nicht ohne Weiteres nachvollziehbar. Da die Vorarbeit von Franziska wenig zugänglich ist, werden aus Effizienzgründen eigene Klassifikatoren trainiert, die allerdings grosso modo ihrer Vorgehensweise (SetFit-Approach) folgt. 
 
 Die Klassifikatoren sollen jedoch dieses Mal in der Programmierung und Funktionsweise auch für außenstehende leicht nachvollziehbar, und über huggingface.co einfach abrufbar sein um eine einfache Nutzung und mögliches debugging auch für Nicht-Informatiker\*innen zu gewährleisten.
 
