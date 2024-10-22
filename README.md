@@ -8,7 +8,10 @@ Dieser Maßgabe entsprechen werden die Codes der Klassifikatoren detalliert komm
 
 ##  SetFit: Few-Shot Classification für Future Skills
 
-Im Anschluss an die Vorarbeit von Franziska Weber bleibt es Ziel, mit dem auf `[BERT](https://medium.com/@shaikhrayyan123/a-comprehensive-guide-to-understanding-bert-from-beginners-to-advanced-2379699e2b51)` basierenden `SetFit` ein vortrainiertes Deep-Learning-Modell *feinzutunen*, das Future Skills aus Kurstiteln, Beschreibungen oder Lernzielen vorhersagen kann. Dafür muss der Text in numerische Werte umgewandelt werden, damit das Modell die semantischen Beziehungen der Wörter lernt.
+Im Anschluss an die Vorarbeit von Franziska Weber bleibt es Ziel, mit dem auf [`BERT`](https://medium.com/@shaikhrayyan123/a-comprehensive-guide-to-understanding-bert-from-beginners-to-advanced-2379699e2b51) basierenden [`SetFit`](https://huggingface.co/blog/setfit) einen vortrainierten Sentence Transformer *feinzutunen*, der Future Skills aus **Kurstiteln**, **Beschreibungen** oder **Lernzielen** vorhersagen kann:
+
+SetFit verwendet einen vorab trainierten Sentence Transformer wie Sentence-BERT. Das Modell ist dafür zuständig, kontextuelle Text-Embeddings zu generieren.
+
 
 Anstatt das Modell von Grund auf zu trainieren, nutzen wir mit `SetFit` ein vortrainiertes Sprachmodell, das bereits grundlegende Embeddings aufweist. Dieses Modell wird dann auf unseren spezifischen Anwendungsfall (FS Skills) feinabgestimmt. 
 
