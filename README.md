@@ -12,10 +12,6 @@ Im Anschluss an die Vorarbeit von Franziska Weber bleibt es Ziel, mit dem auf [`
 
 Da Trainings- und Testdaten in jedem Fall in den Anwendungsfall des FS-Frameworks knapp sind, ist das Few-Shot-Learning eine vielversprechende Alternative zu klassischen Transformern. SetFit, ein Beispiel für Few-Shot-Learning, kann mit nur wenigen Beispielen pro Klasse ähnliche Ergebnisse erzielen wie traditionelles Finetuning mit vielen Daten.
 
-## Literatur
-
-Ein wunderbar intuitive Einführung in Large Language Models bieten *Alammar & Grootendorst 2024*[^6]. Eine kurze Einführung in `SetFit` bieten *Tunstall et al. 2022* [^2]. Für weiterreichende Details bzgl. Transformermodelle siehe *Vaswani et al. 2017*.[^3]. Für eine Überblick über BERT siehe *Reimers & Gurevych 2019*[^4]. Für die Nutzung bereits trainierter Transformer siehe *Chollet 2021* [^5]
-
 ## Daten
 
 ### Trainingsdaten
@@ -86,7 +82,12 @@ model = SetFitModel.from_pretrained("Chernoffface/fs-setfit-multilable-model")
 # Run inference
 preds = model("Grundlagen der Programmierung mit C++")
 ```
- 
+
+## Ein- und weiterführende Literatur
+
+Ein wunderbar intuitive Einführung in Large Language Models bieten *Alammar & Grootendorst 2024*[^6]. Eine kurze Einführung in `SetFit` bieten *Tunstall et al. 2022* [^2]. Für weiterreichende Details bzgl. Transformermodelle siehe *Vaswani et al. 2017*.[^3]. Für eine Überblick über BERT siehe *Reimers & Gurevych 2019*[^4]. Für die Nutzung bereits trainierter Transformer siehe *Chollet 2021* [^5]
+
+## Quellen
 
 [^1]: Figueroa, R.L., Zeng-Treitler, Q., Kandula, S. et al. (2012). Predicting sample size required for classification performance. BMC Med Inform Decis Mak 12, 8 (2012). https://doi.org/10.1186/1472-6947-12-8
 [^2]: Tunstall, L., Reimers, N., Jo, U. E. S., Bates, L., Korat, D., Wasserblat, M., & Pereg, O. (2022). Efficient few-shot learning without prompts. arXiv preprint arXiv:2209.11055.
