@@ -13,3 +13,4 @@ Py/checkpoints/*
 *.Rhistory
 *.html
 /models/*
+*_files/
