@@ -38,7 +38,16 @@ Die Verwendung von Environments sind in Python besonders beim Trainieren eines C
 
 Für die Erzeugung des Enviroments wurde [Poetry](https://python-poetry.org/) verwendet. Poetry bietet gegenüber klassischen Python-Enviroment-Lösungen nicht nur die Verwaltung von Abhängigkeiten, sondern vereinfacht darüber hinaus den gesamten Workflow im Kontext des Paketmanagements: Poetry automatisiert die Installation, Aktualisierung und das Sperren von Abhängigkeiten mithilfe der Dateien pyproject.toml und poetry.lock, wodurch sichergestellt wird, dass alle Projektbeteiligten dieselben Versionen verwenden. Gleichzeitig erstellt es virtuelle Umgebungen, die verhindern, dass die Bibliotheken mit anderen Projekten auf deinem System in Konflikt geraten. Im Gegensatz zu einfachen Python-Environments bietet Poetry ein robustes Tool, das sowohl für den Dependency-Management-Prozess als auch für das Veröffentlichen von Python-Paketen optimiert ist.
 
-Das Poetry-Enviorment wird [hier](Gen_Poetry_Enviorment.ipynb) erstellt. Die dadruch erzeugten `poetry.lock` und `pyproject.toml` befinden sich ebenfalls im Stammverzeichnis des Repositorys.
+Das Poetry-Enviorment wird [hier](Gen_Poetry_Enviorment.ipynb) erstellt. Die dadurch erzeugten `poetry.lock` und `pyproject.toml` befinden sich ebenfalls im Stammverzeichnis des Repositorys.
+
+## Installation des Enviorments
+
+### Installtion aus Jupyther 
+
+Um das Enviorment aus Jupther heraus zu installieren muss eine einem ersten Schritt [Python 3.12.0](https://www.python.org/downloads/release/python-3120/) installiert werden (falls dies noch nicht geschehen ist)
+
+!python -m poetry install
+
 
 # Aufbau des Repos
 
