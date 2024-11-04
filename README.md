@@ -2,9 +2,10 @@
 
 ## Hintergrund
 
-Franziska Weber hat einen [Future Skills-Classifier](http://srv-data01:30080/hex/future_skill_classification) trainiert, der per [API](http://srv-data01:30080/hex/future_skill_classifier_api) abrufbar ist. Leider können einzelne Dependencies nicht aufgelöst, verschiedene Klassen und Pakete nicht installiert werden, weshalb der Classifier nicht mehr zum laufen gebracht werden konnte. Die entsprechenden Codes des Klassifikators sind ebenfalls (für Python-Novizen 😑) nicht ohne Weiteres nachvollziehbar. Da die wertvolle Vorarbeit von Franziska Weber also nicht mehr recht zugänglich ist, wird aus Effizienzgründen ein eigener Klassifikator trainiert, der allerdings - grosso modo - ihrer Vorgehensweise (SetFit-Approach) und ihren Parametereinstellungen folgt. Der Klassifikator soll jedoch dieses Mal in der Programmierung und Funktionsweise auch für Nicht-Informatiker\*innen  möglichst leicht nachvollziehbar, und über [huggingface.co](https://huggingface.co/) einfach abrufbar sein. Auf diese weise soll eine möglichst barrierefreie Nutzung und ggf. anfallendes debugging 🤯 auch für Nicht-Informatiker\*innen einfach und wenig zeitintensiv zu bewerkstelligen sein.
+🚀 Franziska Weber hat einen [Future Skills-Classifier](http://srv-data01:30080/hex/future_skill_classification) trainiert, der per [API](http://srv-data01:30080/hex/future_skill_classifier_api) abrufbar ist. Leider können einzelne Dependencies nicht aufgelöst werden, verschiedene Klassen und Pakete nicht installiert werden, weshalb der Classifier nicht mehr zum Laufen gebracht werden konnte. Die entsprechenden Codes des Klassifikators sind ebenfalls (für Python-Novizen 😑) nicht ohne Weiteres nachvollziehbar.Da die wertvolle Vorarbeit von Franziska Weber also nicht mehr recht zugänglich ist, wird aus Effizienzgründen ein eigener Klassifikator trainiert, der allerdings – grosso modo – ihrer Vorgehensweise (SetFit-Approach) und ihren Parametereinstellungen folgt. Der Klassifikator soll jedoch dieses Mal in der Programmierung und Funktionsweise auch für Nicht-Informatiker\*innen möglichst leicht nachvollziehbar und über [huggingface.co](https://huggingface.co/) einfach abrufbar sein. Auf diese Weise soll eine möglichst barrierefreie Nutzung und ggf. anfallendes Debugging 🤯 auch für Nicht-Informatiker\*innen einfach und wenig zeitintensiv zu bewerkstelligen sein.
 
-Dieser Maßgabe entsprechen werden die Codes des Klassifikators detailliert kommentiert und möglichst intuitiv programmiert.
+Dieser Maßgabe entsprechend werden die Codes des Klassifikators detailliert kommentiert und möglichst intuitiv programmiert.
+
 
 ##  SetFit: Few-Shot Classification für Future Skills
 
@@ -16,12 +17,11 @@ Da Trainings- und Testdaten 🧪 in jedem Fall in den Anwendungsfall des FS-Fram
 
 ### Trainingsdaten
 
-Yannic Hinrichs erzeugte Trainingsdaten, indem er per String-Match in den Kurstiteln und Kursbeschreibungen nach Schlagworten suchte, die auf Future Skills hinweisen. Die so vergebenen Labels wurden händisch korrigiert und in den Trainingsdatensatz aufgenommen. Außerdem wurden Fälle ergänzt, in denen das string-matching keine Future Skills detektierte: Ein Teil von diesen Fällen enthielt keine Kursbeschreibung, der andere enthielt eine Kursbeschreibung. Diese 'negativen' Fälle wurden
-nicht händisch kontrolliert. Der entsprechende R-Code findet sich [hier](R/Create_Traindata_FS_Classifier_hya.R).
+Yannic Hinrichs erzeugte Trainingsdaten, indem er per String-Match in den Kurstiteln und Kursbeschreibungen nach Schlagworten suchte, die auf Future Skills hinweisen. Die so vergebenen Labels wurden händisch korrigiert und in den Trainingsdatensatz aufgenommen. Außerdem wurden Fälle ergänzt, in denen das String-Matching keine Future Skills detektierte: Ein Teil dieser Fälle enthielt keine Kursbeschreibung, der andere enthielt eine Kursbeschreibung. Diese "negativen" Fälle wurden jedoch nicht händisch kontrolliert. Der entsprechende R-Code findet sich [hier](R/Create_Traindata_FS_Classifier_hya.R).
 
-Alternativ liegen weiterhin die Daten Trainingsdaten vor, die Franziska Weber für das Training ihres Classifiers verwendet hat. Diese werden derzeit aufgrund der besseren Klassifizierungs-Ergebnisse des resultierenden Classfiers verwendet.
+Alternativ liegen weiterhin die Trainingsdaten vor, die Franziska Weber für das Training ihres Classifiers verwendet hat. Diese werden derzeit aufgrund der besseren Klassifizierungsergebnisse des resultierenden Classifiers verwendet.
 
-Die Trainingsdaten und alle anderen Daten befinden sich [hier](https://stifterverband.sharepoint.com/sites/Dateiablage/SVDaten/Forms/AllItems.aspx?ct=1730716805420&or=Teams%2DHL&ga=1&LOF=1&id=%2Fsites%2FDateiablage%2FSVDaten%2FAbteilungen%2FPuF%2FHEX%2FAnalyse%2FDaten%2FMaltes%5FFS%5FClassifier%2Fdata&viewid=3315becc%2De761%2D4c82%2D9e01%2D08b652d83ffd).
+Die Trainingsdaten befinden sich [hier](https://stifterverband.sharepoint.com/sites/Dateiablage/SVDaten/Forms/AllItems.aspx?ct=1730716805420&or=Teams%2DHL&ga=1&LOF=1&id=%2Fsites%2FDateiablage%2FSVDaten%2FAbteilungen%2FPuF%2FHEX%2FAnalyse%2FDaten%2FMaltes%5FFS%5FClassifier%2Fdata&viewid=3315becc%2De761%2D4c82%2D9e01%2D08b652d83ffd) auf dem Sharepoint.
 
 
 ## Environment mit Anaconda
