@@ -2,6 +2,8 @@
 
 ## Hintergrund
 
+Der Future Skill Classifier soll — nach letztem Stand — sechs technologische Kompetenzen anhand von Kurstiteln, Kursbeschreibungen und Lernzielen klassifizieren.
+
 🚀 Franziska Weber hat einen [Future Skills-Classifier](http://srv-data01:30080/hex/future_skill_classification) trainiert, der per [API](http://srv-data01:30080/hex/future_skill_classifier_api) abrufbar ist. Leider können einzelne Dependencies nicht aufgelöst werden, verschiedene Klassen und Pakete nicht installiert werden, weshalb der Classifier nicht mehr zum Laufen gebracht werden konnte. Die entsprechenden Codes des Klassifikators sind ebenfalls (für Python-Novizen 😑) nicht ohne Weiteres nachvollziehbar.Da die wertvolle Vorarbeit von Franziska Weber also nicht mehr recht zugänglich ist, wird aus Effizienzgründen ein eigener Klassifikator trainiert, der allerdings – grosso modo – ihrer Vorgehensweise (SetFit-Approach) und ihren Parametereinstellungen folgt. Der Klassifikator soll jedoch dieses Mal in der Programmierung und Funktionsweise auch für Nicht-Informatiker\*innen möglichst leicht nachvollziehbar und über [huggingface.co](https://huggingface.co/) einfach abrufbar sein. Auf diese Weise soll eine möglichst barrierefreie Nutzung und ggf. anfallendes Debugging 🤯 auch für Nicht-Informatiker\*innen einfach und wenig zeitintensiv zu bewerkstelligen sein.
 
 Dieser Maßgabe entsprechend werden die Codes des Klassifikators detailliert kommentiert und möglichst intuitiv programmiert.
