@@ -75,7 +75,7 @@ Im Idealfall muss für die Verwendung des Classifiers lediglich das Notebook `Py
 
 Das trainierte Model wurde sowohl lokal, als auch auf dem Hugging-Face-Hub abgelegt. 
 
-Die lokale Version findet sich [hier](). Die Kopie auf Hugging Face kann [hier](https://huggingface.co/Chernoffface/fs-setfit-model) abgerufen werden. 
+Die lokale Version findet sich [hier](). Die Kopie auf Hugging Face kann [hier](https://huggingface.co/Chernoffface/fs-setfit-multilable-model) abgerufen werden. 
 
 Für eine einfache Anwendung kann das Modell wie folgt für die prediction von Future Skills verwendet werden:
 
