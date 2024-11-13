@@ -34,7 +34,7 @@ Das Conda-Environment für die Erzeugung des Classifiers wird [hier](Gen_Conda_E
 
 ### Installation des Environments
  
-1. Laden und Installieren von Miniconda https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe
+1. Laden und Installieren von Miniconda: https://docs.anaconda.com/miniconda/
 2. Das Arbeitsverzeichnis des Reposetorys mit dem **Anaconda Prompt** öffenen.
 3. Mit `conda env create -f environment.yaml` das Environment erzeugen.
 4. Sollte es (z.B. aufgrund des Proxys) zu Fehlermeldungen bei der Installation kommen, können einzelne Pakete auch seperat nach installiert werden: Es muss sichergestellt werden, dass das Enviorment - so es installiert wurde - verwendet wird: Wir geben dafür ebenfalls im  **Anaconda Prompt** `conda info --envs` ein. Das Environment, das aktiv ist, ist mit einem Asterisk gekennzeichnet (`*`). Sollte nicht unser Environment aktiv sein, aktivieren wir es mit: `conda activate fs_skills_classifier_env`. Anschließend installieren wir die gewünschten Pakete mit `conda install <Paketname>` oder `pip install <Paketname>` nach
