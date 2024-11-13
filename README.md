@@ -52,7 +52,6 @@ C:.
 │   README.md
 │
 ├───data
-│       db_hex.rds
 │       hex_classified_fs_without_lernziele.csv
 │       hex_classified_fs_with_lernziele.csv
 │       train_data_franziska.xlsx
