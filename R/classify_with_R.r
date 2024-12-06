@@ -3,13 +3,16 @@ library(reticulate)
 # Setze Pfad zu miniconda
 Sys.setenv(RETICULATE_MINICONDA_PATH = "C:/Users/Hueck/miniconda3")
 # Aktiviere Enviorment
-use_condaenv("fs_skills_classifier_env", required = TRUE)
+use_condaenv("classify_fs", required = TRUE)
 
 # Python-Funktion definieren
 process_and_predict <- py_run_string("
 from tqdm import tqdm
 import pandas as pd
 from setfit import SetFitModel
+import warnings
+
+warnings.filterwarnings('ignore')
 
 def process_and_predict(df, model_path, fs_labels):
     tqdm.pandas()
