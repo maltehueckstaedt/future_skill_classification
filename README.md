@@ -2,6 +2,8 @@
 
 ## Hintergrund
 
+Der Future Skill Classifier soll — nach letztem Stand — sechs technologische Kompetenzen anhand von Kurstiteln, Kursbeschreibungen und Lernzielen klassifizieren.
+
 🚀 Franziska Weber hat einen [Future Skills-Classifier](http://srv-data01:30080/hex/future_skill_classification) trainiert, der per [API](http://srv-data01:30080/hex/future_skill_classifier_api) abrufbar ist. Leider können einzelne Dependencies nicht aufgelöst werden, verschiedene Klassen und Pakete nicht installiert werden, weshalb der Classifier nicht mehr zum Laufen gebracht werden konnte. Die entsprechenden Codes des Klassifikators sind ebenfalls (für Python-Novizen 😑) nicht ohne Weiteres nachvollziehbar.Da die wertvolle Vorarbeit von Franziska Weber also nicht mehr recht zugänglich ist, wird aus Effizienzgründen ein eigener Klassifikator trainiert, der allerdings – grosso modo – ihrer Vorgehensweise (SetFit-Approach) und ihren Parametereinstellungen folgt. Der Klassifikator soll jedoch dieses Mal in der Programmierung und Funktionsweise auch für Nicht-Informatiker\*innen möglichst leicht nachvollziehbar und über [huggingface.co](https://huggingface.co/) einfach abrufbar sein. Auf diese Weise soll eine möglichst barrierefreie Nutzung und ggf. anfallendes Debugging 🤯 auch für Nicht-Informatiker\*innen einfach und wenig zeitintensiv zu bewerkstelligen sein.
 
 Dieser Maßgabe entsprechend werden die Codes des Klassifikators detailliert kommentiert und möglichst intuitiv programmiert.
@@ -19,7 +21,7 @@ Da Trainings- und Testdaten 🧪 in jedem Fall in den Anwendungsfall des FS-Fram
 
 Yannic Hinrichs erzeugte Trainingsdaten, indem er per String-Match in den Kurstiteln und Kursbeschreibungen nach Schlagworten suchte, die auf Future Skills hinweisen. Die so vergebenen Labels wurden händisch korrigiert und in den Trainingsdatensatz aufgenommen. Außerdem wurden Fälle ergänzt, in denen das String-Matching keine Future Skills detektierte: Ein Teil dieser Fälle enthielt keine Kursbeschreibung, der andere enthielt eine Kursbeschreibung. Diese "negativen" Fälle wurden jedoch nicht händisch kontrolliert. Der entsprechende R-Code findet sich [hier](R/Create_Traindata_FS_Classifier_hya.R).
 
-Alternativ liegen weiterhin die Trainingsdaten vor, die Franziska Weber für das Training ihres Classifiers verwendet hat. Diese werden derzeit aufgrund der besseren Klassifizierungsergebnisse des resultierenden Classifiers verwendet.
+Alternativ liegen weiterhin die Trainingsdaten vor, die Franziska Weber für das Training ihres Classifiers verwendet hat. Diese werden derzeit aufgrund der besseren Klassifizierungsergebnisse des resultierenden Classifiers verwendet. Die Trainingsdaten von Franziska Weber wurden folgendermaßen erzeugt: Für die Few-Shot-Klassifikation wurden synthetische Beispielsätze erstellt, in denen ein einheitliches Satzmuster („Die Veranstaltung behandelt das Thema X“) verwendet wird. Die Beschreibung „X“ basiert auf dem Namen und Synonymen des Skills und wurde (teilweise) vom Felix Süßenbach überprüft. Diese Methode ermöglicht genügend Trainingsdaten pro Klasse zu erzeugen, obwohl sie eventuell von der realen Sprache in den HEX-Daten abweichen könnte. Sieh für einen detaillierten Überblick über die das Vorgehen das folgende [README.md](http://srv-data01:30080/hex/future_skill_classification#example-data).
 
 Die Trainingsdaten befinden sich [hier](https://stifterverband.sharepoint.com/sites/Dateiablage/SVDaten/Forms/AllItems.aspx?ct=1730716805420&or=Teams%2DHL&ga=1&LOF=1&id=%2Fsites%2FDateiablage%2FSVDaten%2FAbteilungen%2FPuF%2FHEX%2FAnalyse%2FDaten%2FMaltes%5FFS%5FClassifier%2Fdata&viewid=3315becc%2De761%2D4c82%2D9e01%2D08b652d83ffd) auf dem Sharepoint.
 
@@ -32,10 +34,12 @@ Das Conda-Environment für die Erzeugung des Classifiers wird [hier](Gen_Conda_E
 
 ### Installation des Environments
  
-1. Laden und Installieren von Miniconda https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe
+1. Laden und Installieren von Miniconda: https://docs.anaconda.com/miniconda/
 2. Das Arbeitsverzeichnis des Reposetorys mit dem **Anaconda Prompt** öffenen.
 3. Mit `conda env create -f environment.yaml` das Environment erzeugen.
-4. Sollte es (z.B. aufgrund des Proxys) zu Fehlermeldungen bei der Installation kommen, können einzelne Pakete auch seperat nach installiert werden: Es muss sichergestellt werden, dass das Enviorment - so es installiert wurde - verwendet wird: Wir geben dafür ebenfalls im  **Anaconda Prompt** `conda info --envs` ein. Das Environment, das aktiv ist, ist mit einem Asterisk gekennzeichnet (`*`). Sollte nicht unser Environment aktiv sein, aktivieren wir es mit: `conda activate fs_skills_classifier_env`. Anschließend installieren wir die gewünschten Pakete mit `conda install <Paketname>` oder `pip install <Paketname>` nach
+4. Sollte es (z.B. aufgrund des Proxys) zu Fehlermeldungen bei der Installation kommen, können einzelne Pakete auch seperat nach installiert werden: Es muss sichergestellt werden, dass das Enviorment - so es installiert wurde - verwendet wird: Wir geben dafür ebenfalls im  **Anaconda Prompt** `conda info --envs` ein. Das Environment, das aktiv ist, ist mit einem Asterisk gekennzeichnet (`*`). Sollte nicht unser Environment aktiv sein, aktivieren wir es mit: `conda activate fs_skills_classifier_env`. Anschließend installieren wir die gewünschten Pakete mit `conda install <Paketname>` oder `pip install <Paketname>` nach. 
+
+**Achtung**: Um Conda-Enviorments auf den Arbeitsreichner des SV zu verwenden, muss der Proxy des SV (Stand Dez. 2024) umgangen werden. Eine Anleitung dafür findet sich [hier](http://srv-data01:30080/hex/topic_modeling#setting-up-a-conda-virtual-environment). Um wiederum in einem Conda-Enviorment `pip install` verwenden zu können, muss man CNTLM abschalten, aus dem VPN des SV gehen und in einem Nicht-SV-Netz sein. Anderenfalls blockiert der Proxy die Kommunikation von `pip install`
 5. Anschließend sollte das Environment in VS Code bei der Verwendung eines Jupyter-Notebooks (z.B. `Py\notebooks\Use_Tiny_Few_Shot_Multi_Lable_Classifier.ipynb`) auswählbar sein.
 
 # Aufbau des Repos
@@ -50,7 +54,6 @@ C:.
 │   README.md
 │
 ├───data
-│       db_hex.rds
 │       hex_classified_fs_without_lernziele.csv
 │       hex_classified_fs_with_lernziele.csv
 │       train_data_franziska.xlsx
@@ -73,7 +76,7 @@ Im Idealfall muss für die Verwendung des Classifiers lediglich das Notebook `Py
 
 Das trainierte Model wurde sowohl lokal, als auch auf dem Hugging-Face-Hub abgelegt. 
 
-Die lokale Version findet sich [hier](). Die Kopie auf Hugging Face kann [hier](https://huggingface.co/Chernoffface/fs-setfit-model) abgerufen werden. 
+Die lokale Version findet sich [hier](). Die Kopie auf Hugging Face kann [hier](https://huggingface.co/Chernoffface/fs-setfit-multilable-model) abgerufen werden. 
 
 Für eine einfache Anwendung kann das Modell wie folgt für die prediction von Future Skills verwendet werden:
 
